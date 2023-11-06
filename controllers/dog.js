@@ -11,6 +11,17 @@ try{
     res.send(`{"error": ${err}}`);
     } 
 };
+exports.dog_view_all_Page = async function(req, res) {
+    try{
+    theDogs = await Dog.find();
+    console.log(theDogs)
+    res.render('dog', { title: 'Dog Search Results', results: theDogs });
+    }
+    catch(err){
+    res.status(500);
+    res.send(`{"error": ${err}}`);
+    }
+   };
 // for a specific Dog.
 exports.dog_detail = function(req, res) {
  res.send('NOT IMPLEMENTED: Dog detail: ' + req.params.id);

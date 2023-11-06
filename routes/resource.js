@@ -16,5 +16,6 @@ router.put('/dogs/:id', dog_controller.dog_update_put);
 // GET request for one Dog.
 router.get('/dogs/:id', dog_controller.dog_detail);
 // GET request for list of all Dog items.
-router.get('/dogs', dog_controller.dog_list);
+// router.get('/dogs', dog_controller.dog_list);
+router.get('/dogs', dog_controller.dog_view_all_Page);
 module.exports = router;
