@@ -112,3 +112,15 @@ exports.dog_view_one_Page = async function(req, res) {
     res.send(`{'error': '${err}'}`);
     }
    };
+
+   exports.dog_update_Page = async function(req, res) {
+    console.log("update view for item "+req.query.id)
+    try{
+    let result = await Dog.findById(req.query.id)
+    res.render('dogupdate', { title: 'Dog Update', toShow: result });
+    }
+    catch(err){
+    res.status(500)
+    res.send(`{'error': '${err}'}`);
+    }
+   };

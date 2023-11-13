@@ -1,0 +1,41 @@
+extends layout
+
+block content
+  h1= title
+  - let dogid = toShow._id
+  - let dog_name = toShow.name
+  - let dog_age = toShow.age
+  - let dog_breed = toShow.breed
+
+  div.row(class='mb-2')
+    div.mr-1 ID is
+    div #{dogid}
+  - let actionid = "/resource/dogs/" + dogid
+  form(id='DogForm', action= actionid, method="PUT")
+    div.form-group
+      label.dogAttr(for='name') Dog Name
+      input#dog_type(type='text', name='name', value= dog_name)
+    div.form-group
+      label.dogAttr(for='age') Dog Age
+      input#cost(type='number', name='age', value= dog_age)
+    div.form-group
+      label.dogAttr(for='breed') Dog Breed
+      input#size(type='text', name='breed', value= dog_breed)
+    input(type="submit")
+    script.
+      document.forms['DogForm'].addEventListener('submit', (event) => {
+        event.preventDefault();
+        // TODO do something here to show user that the form is being submitted
+        fetch(event.target.action, {
+          method: 'PUT',
+          body: new URLSearchParams(new FormData(event.target)) // event.target is the form
+        }).then((resp) => {
+          return resp.json(); // or resp.text() or whatever the server sends
+        }).then((body) => {
+          alert("Update succeeded");
+          // TODO handle the body
+        }).catch((error) => {
+          // TODO handle the error
+          alert("Update failed " + error);
+        });
+      });
