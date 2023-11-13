@@ -19,4 +19,5 @@ router.get('/dogs/:id', dog_controller.dog_detail);
 // router.get('/dogs', dog_controller.dog_list);
 router.get('/dogs', dog_controller.dog_view_all_Page);
 router.get('/detail', dog_controller.dog_view_one_Page);
+router.get('/create', dog_controller.dog_create_Page);
 module.exports = router;
