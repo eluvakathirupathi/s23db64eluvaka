@@ -18,4 +18,5 @@ router.get('/dogs/:id', dog_controller.dog_detail);
 // GET request for list of all Dog items.
 // router.get('/dogs', dog_controller.dog_list);
 router.get('/dogs', dog_controller.dog_view_all_Page);
+router.get('/detail', dog_controller.dog_view_one_Page);
 module.exports = router;

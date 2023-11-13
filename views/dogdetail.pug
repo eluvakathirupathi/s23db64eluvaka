@@ -1,0 +1,25 @@
+extends layout
+
+block content
+  h1= title
+  - let dogid = toShow._id
+  - let dog_name = toShow.name
+  - let dog_age = toShow.age
+  - let dog_breed = toShow.breed
+
+  div
+    div.row
+      div(class='dogAttr mr-3') Dog ID is:
+      div #{dogid}
+
+    div.row
+      div(class='dogAttr mr-3') Dog Name is:
+      div #{dog_name}
+
+    div.row
+      div(class='dogAttr mr-3') Dog age is:
+      div #{dog_age}
+
+    div.row
+      div(class='dogAttr mr-3') Dog breed is:
+      div #{dog_breed}
