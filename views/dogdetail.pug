@@ -2,24 +2,27 @@ extends layout
 
 block content
   h1= title
-  - let dogid = toShow._id
-  - let dog_name = toShow.name
-  - let dog_age = toShow.age
-  - let dog_breed = toShow.breed
+  if (toShow == null)
+    h2 No instance to show
+  else
+    - let dogid = toShow._id
+    - let dog_name = toShow.name
+    - let dog_age = toShow.age
+    - let dog_breed = toShow.breed
 
-  div
-    div.row
-      div(class='dogAttr mr-3') Dog ID is:
-      div #{dogid}
+    div(style='border: 1px solid black; padding: 15px; border-radius: 5px;')
+      div.row
+        div(class='dogAttr mr-3') Dog ID is:
+        div(class='detail mr-3') #{dogid}
 
-    div.row
-      div(class='dogAttr mr-3') Dog Name is:
-      div #{dog_name}
+      div.row
+        div(class='dogAttr mr-3') Dog Name is:
+        div(class='detail mr-3') #{dog_name}
 
-    div.row
-      div(class='dogAttr mr-3') Dog age is:
-      div #{dog_age}
+      div.row
+        div(class='dogAttr mr-3') Dog age is:
+        div(class='detail mr-3') #{dog_age}
 
-    div.row
-      div(class='dogAttr mr-3') Dog breed is:
-      div #{dog_breed}
+      div.row
+        div(class='dogAttr mr-3') Dog breed is:
+        div(class='detail mr-3') #{dog_breed}
