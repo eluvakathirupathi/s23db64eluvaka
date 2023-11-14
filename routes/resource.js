@@ -21,4 +21,5 @@ router.get('/dogs', dog_controller.dog_view_all_Page);
 router.get('/detail', dog_controller.dog_view_one_Page);
 router.get('/create', dog_controller.dog_create_Page);
 router.get('/update', dog_controller.dog_update_Page);
+router.get('/delete', dog_controller.dog_delete_Page);
 module.exports = router;
