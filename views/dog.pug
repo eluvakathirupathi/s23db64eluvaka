@@ -9,13 +9,19 @@ block content
     //-   { name: "Charlie", age: 5, breed: "German Shepherd"},
     //-   { name: "Chintu", age: 3, breed:"Golden Retriever"}]
   div(class="container-fluid")
-    div(class="row")
+    div(class="row m-1")
         for item, index in result
-          div(class="col-sm-2" onclick=`buy(${index})`)
+          - let destination = `dispatch(\"/resource/update?id=${item._id}\")`
+          div(class="col-sm-2 m-1" )
             p Name: #{item.name}
             p age: #{item.age}
             p breed: #{item.breed}
+            button.btn( class="btn-primary ml-1", onclick= destination) Update
   script. 
     function buy(index) {
       alert(`You purchased item ${index}`);
+    }
+  script.
+    function dispatch(path){
+    window.location.href=path
     }
