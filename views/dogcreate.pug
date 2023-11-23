@@ -1,31 +1,40 @@
 extends layout
+
 block content
   h1= title
   form(id='DogForm', action="/resource/dogs", method="POST")
     div.form-group
       label.dogAttr(for='name') Dog Name
-      input#name(type='text', name='name')
+      input#name(type='text', name='name', required)
     div.form-group
       label.dogAttr(for='age') Dog Age
-      input#age(type='number', name='age')
+      input#age(type='number', name='age', required, min='1', max='20')
     div.form-group
       label.dogAttr(for='breed') Dog Breed
-      input#breed(type='text', name='breed')
-    input(type="submit")
+      input#breed(type='text', name='breed', required)
+    input(type="submit", value="Create Dog", class="btn btn-primary")
   script.
     document.forms['DogForm'].addEventListener('submit', (event) => {
-      event.preventDefault();
-      // TODO do something here to show the user that the form is being submitted
-      fetch(event.target.action, {
-        method: 'POST',
-        body: new URLSearchParams(new FormData(event.target)) // event.target is the form
-      }).then((resp) => {
-        return resp.json(); // or resp.text() or whatever the server sends
-      }).then((body) => {
-        alert("Save succeeded");
-        // TODO handle the body
-      }).catch((error) => {
-        // TODO handle the error
-        alert("Save failed " + error);
-      });
+      const nameInput = document.getElementById('name');
+      const nameValue = nameInput.value.trim();
+      
+      // Check if the name contains only letters using a regular expression
+      if (!/^[A-Za-z]+$/.test(nameValue)) {
+        alert('Name should only contain letters.');
+        event.preventDefault(); // Prevent form submission
+      } else {
+        // TODO show the user that the form is being submitted (e.g., loading spinner)
+        fetch(event.target.action, {
+          method: 'POST',
+          body: new URLSearchParams(new FormData(event.target)) // event.target is the form
+        }).then((resp) => {
+          return resp.json(); // or resp.text() or whatever the server sends
+        }).then((body) => {
+          // TODO handle the body, update UI
+          alert("Save succeeded");
+        }).catch((error) => {
+          // TODO handle the error, update UI
+          alert("Save failed " + error);
+        });
+      }
     })
