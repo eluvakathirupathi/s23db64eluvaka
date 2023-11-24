@@ -28,9 +28,9 @@ router.get('/dogs/:id', dog_controller.dog_detail);
 // router.get('/dogs', dog_controller.dog_list);
 router.get('/dogs', dog_controller.dog_view_all_Page);
 router.get('/detail', dog_controller.dog_view_one_Page);
-router.get('/create', dog_controller.dog_create_Page);
+router.get('/create',secured, dog_controller.dog_create_Page);
 router.get('/update',secured, dog_controller.dog_update_Page);
-router.get('/delete', dog_controller.dog_delete_Page);
+router.get('/delete',secured, dog_controller.dog_delete_Page);
 router.post('/login', passport.authenticate('local'), function(req, res) {
     res.redirect('/');
    });
