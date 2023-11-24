@@ -4,7 +4,7 @@ block content
   h1= title
   - let result = results;
   div(class="container-fluid")
-    a(href='/resource/dogs/create', class='btn btn-primary mb-2') Create Dog
+    a(href='/resource/create', class='btn btn-primary mb-2') Create Dog
     div(class="row m-1")
       for item, index in result
         - let destination1 = `dispatch1(\"/resource/detail?id=${item._id}\")`
